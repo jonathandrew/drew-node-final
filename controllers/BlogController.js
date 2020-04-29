@@ -1,4 +1,4 @@
-const Blog = require('../models/Blog');
+const Blog = require("../models/Blog");
 
 module.exports = {
   getAllBlogs: (req, res) => {
@@ -7,6 +7,7 @@ module.exports = {
     });
   },
   createBlog: (req, res) => {
+    const newBlog = new Blog();
     newBlog.title = req.body.title;
     newBlog.author = req.body.author;
     newBlog.subject = req.body.subject;
@@ -31,7 +32,7 @@ module.exports = {
   },
   deleteBlog: (req, res) => {
     Blog.findByIdAndDelete({ _id: req.params.id }).then(
-      res.json({ message: 'deleted' })
+      res.json({ message: "deleted" })
     );
   },
 };
